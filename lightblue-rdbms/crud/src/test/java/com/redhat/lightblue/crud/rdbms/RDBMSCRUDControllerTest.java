@@ -39,7 +39,7 @@ import java.util.Scanner;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class RDBMSCRUDControllerTest extends TestCase {
+public class RDBMSCRUDControllerTest {
 
     public static DataSource dsMock = null;
     public static Connection cMock = null;
@@ -49,8 +49,7 @@ public class RDBMSCRUDControllerTest extends TestCase {
     RDBMSCRUDController cut = null; //class under test
 
     @Before
-    protected void setUp() throws Exception {
-        super.setUp();
+    public void setUp() throws Exception {
         cut = new RDBMSCRUDController(new MongoDBResolver( new DataSourcesConfiguration()));
         dsMock = mock(DataSource.class);
         cMock = mock(Connection.class);
@@ -86,10 +85,10 @@ public class RDBMSCRUDControllerTest extends TestCase {
 
     }
 
-    @Test
     @Ignore
+    @Test
     public void testFind() throws Exception {
-        String json = new Scanner(new File("metadata.json")).useDelimiter("\\Z").next();
+        String json = new Scanner(this.getClass().getClassLoader().getResourceAsStream("metadata.json")).useDelimiter("\\Z").next();
         JsonNode node = JsonUtils.json(json);
         Extensions<JsonNode> extensions = new Extensions<>();
         extensions.addDefaultExtensions();

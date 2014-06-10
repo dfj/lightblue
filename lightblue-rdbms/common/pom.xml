@@ -24,7 +24,6 @@
         <artifactId>rdbms-pom</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.redhat.lightblue.rdbms</groupId>
     <artifactId>rdbms-common</artifactId>
     <packaging>jar</packaging>
     <version>0.1-SNAPSHOT</version>
