@@ -145,7 +145,7 @@ public class RDBMSCRUDController implements CRUDController {
             EntityMetadata md = crudOperationContext.getEntityMetadata(crudOperationContext.getEntityName());
             if (md.getAccess().getFind().hasAccess(crudOperationContext.getCallerRoles())) {
                 FieldAccessRoleEvaluator roleEval = new FieldAccessRoleEvaluator(md, crudOperationContext.getCallerRoles());
-                RDBMSContext<DocCtx> rdbmsContext = new RDBMSContext<DocCtx>();
+                RDBMSContext<DocCtx> rdbmsContext = new RDBMSContext<>();
                 //configure rdbmsContext TODO need to finish
                 rdbmsContext.setRowMapper(new DocCtxRowMapper());
                 rdbmsContext.setDataSourceName("java:jboss/jdbc/lightblueOracleDS"); //example

@@ -44,8 +44,10 @@ public class QueryCommand<T> extends HystrixCommand<List<T>> {
     protected List<T> run() {
         try {
             RDBMSUtils rdbmsUtils = new RDBMSUtils();
-            DataSource dataSource = rdbmsUtils.getDataSource(rdbmsContext);
-            //....
+            rdbmsUtils.getDataSource(rdbmsContext);
+            rdbmsUtils.getConnection(rdbmsContext);
+            rdbmsUtils.getStatement(rdbmsContext);
+            rdbmsUtils.buildMappedList(rdbmsContext);
             return rdbmsContext.getResultList();
         } catch (RuntimeException x) {
             throw new HystrixBadRequestException("in "+getClass().getName(),x);
